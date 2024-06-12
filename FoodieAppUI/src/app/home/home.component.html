@@ -1,0 +1,53 @@
+<div>
+<div style="background-color:red">  
+<hr style="background:#F87431; border:0; height:7px; text-align:center" />
+ <div style="text-align:center">Yummy Fooddie</div>
+    <div> 
+      <input #searchLocationBox id="location" (keyup)="search(searchBox.value)" placeholder="search location" ng-model="searchLocation"/>
+      <input #searchCuisineBox id="cuisine" (keyup)="search(searchBox.value)" placeholder="search cuisine" ng-model="searchCuisine"/>
+      <button type="button" class="btn btn-primary" id="search-button" (click)="onSearchButtonClick(searchLocationBox.value, searchCuisineBox.value)">Search</button>
+   </div>
+   <hr style="background: #F87431; border: 0; height: 7px" />
+
+</div>
+<div *ngIf="isValid">
+<div class="card-deck" id="search-result">
+  <a *ngFor="let restaurants of restaurantLst" class="col-1-4">
+    <div class="card border-primary" style="max-width: 18rem;">
+    <div class="module hero">
+    <img class="card-img-top" src={{restaurants.restaurant.featured_image}} alt="Card image cap">
+    <div class="card-body text-primary" >
+      <h5 class="card-title">{{restaurants.restaurant.name}}</h5>
+      <p class="card-text">{{restaurants.restaurant.location.address}}</p>
+      <p class="card-text">Cost For Two: {{restaurants.restaurant.average_cost_for_two}}</p>
+      <p class="card-text">Rating: {{restaurants.restaurant.user_rating.rating_text}}</p>
+      <p class="card-text">Votes: {{restaurants.restaurant.user_rating.votes}}</p>
+      <button class="btn" [ngClass]="{ 'favourite': isAddButton, 'unfavourite': !isAddButton  }" (click)="onFavouriteButtonClick(restaurants.restaurant)">
+        {{clicked ? 'Add' : 'Remove'}}</button>
+        </div>
+  </div>
+  </div>
+  </a>
+</div>
+</div>
+<div *ngIf="!isValid">
+<div class="card-group">
+  <a *ngFor="let restaurants of restaurantLst" class="col-1-4" routerLink="/detail/{{restaurants.restaurant.id}}">
+    <div class="card" style="max-width: 18rem;">
+    <div class="module hero">
+    <img class="card-img-top" src={{restaurants.restaurant.featured_image}} alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{restaurants.restaurant.name}}</h5>
+      <p class="card-text">{{restaurants.restaurant.location.address}}</p>
+      <p class="card-text"></p>
+    </div>
+  </div>
+  </div>
+  </a>
+</div>
+</div>
+<p>
+<p>
+<p>
+<button (click)="goBack()">go back</button>
+</div>

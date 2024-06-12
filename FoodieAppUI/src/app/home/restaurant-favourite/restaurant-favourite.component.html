@@ -1,0 +1,23 @@
+<div>
+<div class="card-deck" id="search-result">
+  <a *ngFor="let restaurants of restaurantLst" class="col-1-4">
+    <div class="card border-primary" style="max-width: 18rem;">
+    <div class="module hero">
+    <img class="card-img-top" src={{restaurants.restaurant.featured_image}} alt="Card image cap">
+    <div class="card-body text-primary" >
+      <h5 class="card-title">{{restaurants.restaurant.name}}</h5>
+      <p class="card-text">{{restaurants.restaurant.location.address}}</p>
+      <p class="card-text">Cost For Two: {{restaurants.restaurant.average_cost_for_two}}</p>
+      <p class="card-text">Rating: {{restaurants.restaurant.user_rating.rating_text}}</p>
+      <p class="card-text">Votes: {{restaurants.restaurant.user_rating.votes}}</p>
+      <a class="btn btn-primary text-white" (click)="onRemoveBtnclick(restaurants.restaurant)">Remove Favourite</a> 
+      </div>
+  </div>
+  </div>
+  </a>
+  </div>
+<p>
+<p>
+<p>
+  <button (click)="goBack()">go back</button>
+</div>

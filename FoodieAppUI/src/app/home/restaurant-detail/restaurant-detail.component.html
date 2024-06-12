@@ -1,0 +1,28 @@
+<div>
+<div class="card">
+<div *ngFor="let restaurants of restaurantLst"> 
+<div *ngIf="restaurants.restaurant.id == id" > 
+  <h2>{{ restaurants.restaurant.name | uppercase }}</h2>
+  <div>
+    <div class="card border-primary">
+    <img class="card-img-top" src={{restaurants.restaurant.featured_image}} alt="Card image cap">
+    <div class="card-body text-primary">
+      <h5 class="card-title">{{restaurants.restaurant.name}}</h5>
+      <p class="card-text">{{restaurants.restaurant.location.address}}</p>
+      <p class="card-text">cuisines: {{restaurants.restaurant.cuisines}}
+      <p class="card-text">Cost For Two: {{restaurants.restaurant.average_cost_for_two}}</p>
+      <p class="card-text">Rating: {{restaurants.restaurant.user_rating.rating_text}}</p>
+      <p class="card-text">Votes: {{restaurants.restaurant.user_rating.votes}}</p>
+    </div>
+  </div>
+  <input #textbox type="text" class="addcomments" [(ngModel)]="comment"/>
+  <button class="comment" (click)="commentBtnclicked(textbox.value, restaurants.restaurant)">Comment</button>
+  </div>
+  </div>
+</div>
+</div>
+<p>
+<p>
+<p>
+  <button (click)="goBack()">go back</button>
+</div>
